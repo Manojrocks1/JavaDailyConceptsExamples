@@ -1,0 +1,149 @@
+✅ Concept 1: Constructors
+🔹 What is a Constructor?
+A constructor is a special method used to initialize objects when they are created.
+->It has the same name as the class and no return type.
+
+🌍 Real-World Analogy:
+When you create a bank account, you're required to provide initial information
+ like the holder’s name and starting balance — that’s similar to passing values 
+  into a constructor to set up an object.
+
+Java Example:
+
+import java.util.Scanner; // Import the Scanner class
+
+class BankAccount {
+    String holderName;
+    double balance;
+
+    // Constructor
+    BankAccount(String name, double initialBalance) {
+        holderName = name;
+        balance = initialBalance;
+    }
+
+    void display() {
+        System.out.println("Account Holder: " + holderName);
+        System.out.println("Balance: ₹" + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object
+
+        System.out.print("Enter account holder's name: ");
+        String name = scanner.nextLine(); // Read the full line for name
+
+        System.out.print("Enter initial balance: ₹");
+        double initialBalance = scanner.nextDouble(); // Read the double for balance
+
+        // Consume the leftover newline character after reading the double
+        // This is important if you were to read another line of text afterwards.
+        scanner.nextLine(); 
+
+        BankAccount acc1 = new BankAccount(name, initialBalance); // Create BankAccount object with user input
+        acc1.display(); // Display the account details
+
+        scanner.close(); // Close the scanner to release resources
+    }
+}
+
+o/p:
+  Enter account holder's name: Golla Manoj Kumar
+  Enter initial balance: ?30000 
+ Account Holder: Golla Manoj Kumar
+ Balance: ?30000.0
+Okay, let's remodify the BankAccount and Main classes to incorporate user input using Scanner and aim for a more concise structure.
+
+Here's the remodified code:
+
+Java
+
+import java.util.Scanner; // Import the Scanner class
+
+class BankAccount {
+    String holderName;
+    double balance;
+
+    // Constructor
+    BankAccount(String name, double initialBalance) {
+        holderName = name;
+        balance = initialBalance;
+    }
+
+    void display() {
+        System.out.println("Account Holder: " + holderName);
+        System.out.println("Balance: ₹" + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object
+
+        System.out.print("Enter account holder's name: ");
+        String name = scanner.nextLine(); // Read the full line for name
+
+        System.out.print("Enter initial balance: ₹");
+        double initialBalance = scanner.nextDouble(); // Read the double for balance
+
+        // Consume the leftover newline character after reading the double
+        // This is important if you were to read another line of text afterwards.
+        scanner.nextLine(); 
+
+        BankAccount acc1 = new BankAccount(name, initialBalance); // Create BankAccount object with user input
+        acc1.display(); // Display the account details
+
+        scanner.close(); // Close the scanner to release resources
+    }
+}
+Explanation of Changes and Minimization:
+import java.util.Scanner;: This line is added at the top to make the Scanner class available.
+
+Scanner scanner = new Scanner(System.in);: Inside the main method, a Scanner object named scanner is created. This object is used to read input from the console (System.in).
+
+User Prompts:
+
+System.out.print("Enter account holder's name: ");
+
+System.out.print("Enter initial balance: ₹");
+These lines provide clear prompts to the user, instructing them what to enter.
+
+Reading Input:
+
+String name = scanner.nextLine();: Reads the entire line of text entered by the user for the holderName.
+
+double initialBalance = scanner.nextDouble();: Reads the next double value entered by the user for the balance.
+
+scanner.nextLine(); after nextDouble(): This is a common and important step when mixing nextInt(), nextDouble(), etc., with nextLine(). After nextDouble() reads the number, it doesn't consume the newline character (\n) that the user presses after typing the number. If you were to call scanner.nextLine() immediately after, it would consume this leftover newline and treat it as an empty input. While not strictly necessary in this specific example (because we don't read another nextLine() after), it's a good habit for robust input handling.
+
+BankAccount acc1 = new BankAccount(name, initialBalance);: Instead of hardcoding "Manoj" and 10000, we now pass the name and initialBalance variables (which contain the user's input) to the BankAccount constructor.
+
+scanner.close();: Always close the Scanner object when you are done with it to prevent resource leaks.
+
+This remodified code achieves the goal of taking user input for creating a BankAccount object while keeping the structure clean and concise.
+
+✅ Concept 2: For Loop
+🔹 What is a For Loop?
+A for loop is used to repeat a block of code a specific number of times.
+
+🌍 Real-World Analogy:
+If you want to print seat numbers from 1 to 5 in a cinema hall — you'd use a loop to avoid repeating code manually.
+
+🧑‍💻 Java Example:
+
+public class SeatPrinter {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Seat " + i + " is available.");
+        }
+    }
+}
+🧠 Output: 
+
+Seat 1 is available.
+Seat 2 is available.
+Seat 3 is available.
+Seat 4 is available.
+Seat 5 is available.
