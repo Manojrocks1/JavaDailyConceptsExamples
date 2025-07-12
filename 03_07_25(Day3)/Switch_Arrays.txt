@@ -1,0 +1,199 @@
+                                       ✅ Concept 1: switch Statement
+🔸 What is switch?
+A switch statement allows you to execute one code block from multiple options
+ based on a variable's value.
+
+🌍 Real-World Analogy:
+Think of a vending machine: You press a number (1, 2, 3...), and it gives you 
+ a drink based on your selection.
+
+Example(Java):
+
+code:
+   import java.util.Scanner; // Import the Scanner class to read user input
+
+public class Menu {
+
+    public static void showMenu() {
+        // Declare a Scanner object to read input from the console (System.in)
+        Scanner inputScanner = new Scanner(System.in);
+
+        // Display the menu options to the user
+        System.out.println("--- Welcome to Our Cafe Menu ---");
+        System.out.println("1. Coffee");
+        System.out.println("2. Tea");
+        System.out.println("3. Juice");
+        System.out.println("4. Soft Drink");
+        System.out.print("Enter your choice (1-4): "); // Prompt the user for input
+
+        int choice; // Declare a variable to store the user's choice
+
+        // Check if the next input token is an integer
+        if (inputScanner.hasNextInt()) {
+            choice = inputScanner.nextInt(); // Read the integer input from the user
+        } else {
+            // If the input is not an integer, handle it as an invalid choice
+            System.out.println("Invalid input! Please enter a number.");
+            inputScanner.next(); // Consume the invalid input to prevent an infinite loop
+            // We could loop here to ask again, but for this example, we'll just exit
+            // or let the switch's default case handle it if choice is initialized to 0 or similar.
+            choice = 0; // Assign a value that will fall into the default case
+        }
+
+
+        // Use a switch statement to perform actions based on the user's choice
+        switch (choice) {
+            case 1:
+                System.out.println("You chose Coffee. Enjoy your brew!");
+                break; // Exit the switch statement after this case is executed
+            case 2:
+                System.out.println("You chose Tea. A refreshing choice!");
+                break;
+            case 3:
+                System.out.println("You chose Juice. Get your vitamins!");
+                break;
+            case 4:
+                System.out.println("You chose Soft Drink. Quench your thirst!");
+                break;
+            default: // This case is executed if 'choice' does not match any of the above cases
+                System.out.println("Invalid choice. Please select a number from 1 to 4.");
+                break;
+        }
+
+        // It's good practice to close the scanner when you are finished with it
+        // to release system resources.
+        inputScanner.close();
+    }
+
+    // You can add a main method to test your showMenu() function
+    public static void main(String[] args) {
+        showMenu(); // Call the showMenu method to display and process the menu
+    }
+}
+o/p:
+  --- Welcome to Our Cafe Menu ---
+1. Coffee
+2. Tea
+3. Juice
+4. Soft Drink
+Enter your choice (1-4): 3
+You chose Juice. Get your vitamins!
+
+                                           ✅ Concept 2: Arrays
+🔸 What is an Array?
+An array is a container object that holds a fixed number of values of the same type.
+
+🌍 Real-World Analogy:
+Think of an egg tray that holds multiple eggs — each egg is stored in a specific spot (index).
+
+🧑‍💻 Java Example:
+java
+
+With main method:
+
+public class Scores {
+    public static void main(String[] args) {
+        int[] scores = {85, 90, 78, 92};
+
+        int total = 0;
+        for (int score : scores) {
+            total += score;
+        }
+
+        double average = total / (double) scores.length;
+        System.out.println("Average Score: " + average);
+    }
+}
+
+Without main method:
+     public class Scores {
+
+    public static void showScores(Scanner inputScanner) {
+        // Create a Scanner object to read input from the console (System.in)
+        // Scanner inputScanner = new Scanner(System.in);
+
+        System.out.println("--- Score Calculator ---");
+
+        int numScores; // Declare a variable to store the number of scores the user wants to enter
+
+        // Loop to ensure valid input for the number of scores
+        while (true) {
+            System.out.print("Enter the number of scores you want to input: ");
+            if (inputScanner.hasNextInt()) {
+                numScores = inputScanner.nextInt(); // Read the number of scores
+                if (numScores > 0) { // Ensure the number of scores is positive
+                    break; // Exit the loop if input is a valid positive integer
+                } else {
+                    System.out.println("Please enter a positive number of scores.");
+                }
+            } else {
+                System.out.println("Invalid input! Please enter a whole number.");
+                inputScanner.next(); // Consume the invalid input to prevent an infinite loop
+            }
+        }
+
+        // Declare an array to store the scores, with size determined by user input
+        int[] scores = new int[numScores];
+        int total = 0; // Initialize total score to 0
+
+        // Loop to prompt the user for each score and store it in the array
+        for (int i = 0; i < numScores; i++) {
+            while (true) { // Inner loop to validate each score input
+                System.out.print("Enter score #" + (i + 1) + ": ");
+                if (inputScanner.hasNextInt()) {
+                    int score = inputScanner.nextInt(); // Read the score
+                    scores[i] = score; // Store the score in the array
+                    total += score;    // Add the score to the total
+                    break; // Exit the inner loop if input is a valid integer
+                } else {
+                    System.out.println("Invalid input! Please enter a whole number for the score.");
+                    inputScanner.next(); // Consume the invalid input
+                }
+            }
+        }
+
+        // Display the entered scores (optional, for verification)
+        System.out.print("\nEntered Scores: ");
+        for (int i = 0; i < scores.length; i++) {
+            System.out.print(scores[i] + (i == scores.length - 1 ? "" : ", "));
+        }
+        System.out.println(); // New line after scores
+
+        // Calculate and print the average
+        // Ensure integer division doesn't truncate the result for average,
+        // by casting total to a double before division.
+        double average = (double) total / scores.length;
+        System.out.println("Total Score: " + total);
+        System.out.println("Average Score: " + String.format("%.2f", average)); // Format to 2 decimal places
+    }
+}
+
+To execute these 2 methods we want to have main method:
+  Main.java:
+    import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner mainScanner = new Scanner(System.in);
+        Menu.showMenu(mainScanner);
+        Scores.showScores(mainScanner);
+    }
+}
+
+o/p:
+   --- Welcome to Our Cafe Menu ---
+1. Coffee
+2. Tea
+3. Juice
+4. Soft Drink
+Enter your choice (1-4): 4
+You chose Soft Drink. Quench your thirst!
+--- Score Calculator ---
+Enter the number of scores you want to input: 3
+Enter score #1: 39
+Enter score #2: 79
+Enter score #3: 67
+
+Entered Scores: 39, 79, 67
+Total Score: 185
+Average Score: 61.67
