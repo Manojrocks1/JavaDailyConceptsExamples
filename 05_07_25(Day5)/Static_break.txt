@@ -1,0 +1,88 @@
+                 ✅ Concept 1: Static Keyword
+🔸 What is static?
+The static keyword makes a member (method or variable) belong to the class rather than instances.
+
+You can access it without creating an object.
+
+🌍 Real-World Analogy:
+Think of a school rule (like “Wear uniform”) that applies to all students — not just one. That rule is static.
+
+🧑‍💻 Example:
+Code(java):
+
+class School {
+    static String schoolName = "Greenwood High";
+
+    static void announce() {
+        System.out.println("Welcome to " + schoolName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        School.announce(); // No object needed
+    }
+}
+
+o/p:
+    Welcome to Greenwood High
+
+                                                 ✅ Concept 2: Break Statement
+🔸 What is break?
+The break statement is used to exit a loop or switch block prematurely.
+
+🌍 Real-World Analogy:
+If you're looking for a book on a shelf, you stop (break) once you find it — no need to check all books.
+
+Ex:
+
+Code(java):
+   import java.util.Scanner;
+
+public class FindNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask user for size of the array
+        System.out.print("Enter the number of elements in the array: ");
+        int size = scanner.nextInt();
+
+        // Declare array with given size
+        int[] numbers = new int[size];
+
+        // Ask user to input array elements
+        System.out.println("Enter " + size + " numbers:");
+        for (int i = 0; i < size; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        // Ask user for the number to find
+        System.out.print("Enter the number to find: ");
+        int target = scanner.nextInt();
+
+        boolean found = false; // Flag to check if number is found
+
+        // Loop through the array to search for the number
+        for (int num : numbers) {
+            if (num == target) {
+                System.out.println("Found: " + num);
+                found = true;
+                break; // Exit loop once found
+            }
+        }
+
+        // If not found, display message
+        if (!found) {
+            System.out.println("Number not found in the array.");
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+
+o/p:
+    Enter the number of elements in the array: 4
+    Enter 4 numbers: 10 25 36 50
+    Enter the number to find: 50
+    Found: 50
