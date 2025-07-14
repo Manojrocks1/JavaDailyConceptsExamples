@@ -1,0 +1,73 @@
+                                        Concept 1: "this" Keyword
+
+🔸 What is it?
+The this keyword refers to the current object inside a class.
+
+🌍 Real-World Analogy:
+Imagine you're in a group of people with the same name. You say "this Manoj" 
+while pointing to yourself — that's how Java distinguishes between class variables
+ and parameters.
+
+Ex:
+Code(java):
+
+   class Student {
+    String name;
+
+    // Constructor with same name as instance variable
+    Student(String name) {
+        this.name = name;  // 'this.name' refers to the instance variable
+    }
+
+    void display() {
+        System.out.println("Student name: " + name);
+    }
+    public static void main(String[] args) {
+        Student s = new Student("Priyank");
+        s.display();
+    }
+}
+
+o/p:
+     Student name: Priyank
+
+                                               Concept 2: "do-while" Loop
+🔸 What is it?
+A "do-while" loop is similar to a while loop, "but it runs at least once" even if the condition is false.
+
+🌍 Real-World Analogy:
+You try a new food at least once before deciding if you like it or not.
+
+🧑‍💻 Example:
+
+ Code(java):
+     public class JavaDoWhileLoop {
+
+	public static void main(String[] args) {
+
+		// Declare and initialize an integer variable 'i' with the value 5.
+		int i = 5;
+
+		// Start of the do-while loop.
+		// The code inside the 'do' block will execute at least once,
+		// regardless of the condition.
+		do {
+			// Print the current value of 'i' to the console.
+			System.out.println(i);
+
+			// Increment the value of 'i' by 1.
+			i++;
+		}
+		// The loop continues as long as the value of 'i' is less than or equal to 10.
+		// After each iteration, the condition is checked.
+		while (i <= 10);
+	}
+}
+
+o/p:
+5
+6
+7
+8
+9
+10
