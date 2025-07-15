@@ -1,0 +1,62 @@
+                                     ✅ Concept 1: final Keyword
+🔸 What is final?
+The final keyword is used to "declare constants" or to "prevent changes to variables, methods, or classes".
+
+A final variable = constant value (cannot be reassigned)
+
+A final method = cannot be overridden
+
+A final class = cannot be subclassed
+
+🌍 Real-World Analogy:
+Your date of birth is final — it doesn’t change once assigned.
+
+🧑‍💻 Java Example:
+Code(java):
+
+public class Constants {
+    final int MAX_USERS = 100;
+
+    void showLimit() {
+        System.out.println("Max users allowed: " + MAX_USERS);
+    }
+}
+🧠 Output:
+
+bash
+
+Max users allowed: 100
+Trying to reassign MAX_USERS will cause a compile-time error.
+
+                                         ✅ Concept 2: continue Statement
+🔸 What is continue?
+The continue statement skips the current iteration and moves to the next one in a loop.
+
+🌍 Real-World Analogy:
+Imagine you’re reading 10 emails and want to skip spam emails. 
+->When you see spam, you skip it and move to the next.
+
+🧑‍💻 Java Example:
+Code(java):
+
+public class ContinueExample {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) {
+                continue;  // Skip when i is 3
+            }
+            System.out.println("Value: " + i);
+        }
+    }
+}
+🧠 Output:
+
+Value: 1
+Value: 2
+Value: 4
+Value: 5
+✅ Summary Table
+Concept	Use Case	Real-Life Analogy
+final	Prevent modification	Your birthdate never changes
+continue	Skip specific iterations in a loop	Skip spam emails, read the rest
+
